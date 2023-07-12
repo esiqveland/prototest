@@ -1,0 +1,36 @@
+version: v1
+# Mix of local binaries and plugins
+# for plugin list, see: https://buf.build/plugins
+plugins:
+  - name: go
+    out: generated/go
+    opt:
+      - paths=source_relative
+  - name: go-grpc
+    out: generated/go
+    opt:
+      - paths=source_relative
+      - require_unimplemented_servers=false # https://github.com/grpc/grpc-go/blob/11feb0a9afd844fd2ab1f18dca02ad6a344b21bf/cmd/protoc-gen-go-grpc/README.md#future-proofing-services
+  - plugin: buf.build/bufbuild/connect-go:v1.9.0
+    out: generated/go
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/protocolbuffers/java:v23.4
+    out: generated/java
+  - plugin: buf.build/grpc/java:v1.56.1
+    out: generated/java
+  - plugin: buf.build/protocolbuffers/java:v23.4
+    out: generated/java-lite
+    opt:
+      - lite
+  - plugin: buf.build/grpc/java:v1.56.1
+    out: generated/java-lite
+    opt:
+      - lite
+  - plugin: buf.build/protocolbuffers/kotlin:v23.4
+    out: generated/kotlin
+  - plugin: buf.build/grpc/kotlin:v1.3.0
+    out: generated/kotlin
+
+
+

@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package org.noteroo.kafka.noteroo;
+
+import "org/noteroo/kafka/kafka.proto";
+
+option go_package = "github.com/esiqveland/prototest/protos/org/noteroo/kafka/noteroo";
+
+message AccountEvent {
+  option (org.noteroo.kafka.kafka) = {
+    topic: "account.events";
+  };
+
+  string account_id = 1;
+  int64 created_at_millis = 2;
+  oneof data {
+    ChangedEncryptionKeys changed_encryption_keys = 15;
+    SignedUp signed_up = 16;
+    ContactedSupport contacted_support = 17;
+    ChangedEmail changed_email = 18;
+  }
+}
+
+message ChangedEmail {}
+message ChangedEncryptionKeys {}
+
+message SignedUp {
+  string utm_source = 1;
+  string email = 2;
+}
+
+message ContactedSupport {
+  // where the customer contacted via, f.ex. 'in-app form' or 'website'
+  string source = 1;
+}
