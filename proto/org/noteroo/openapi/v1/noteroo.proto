@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package org.noteroo.openapi.v1;
 
+import "org/noteroo/service.proto";
 
 message ListEventsRequest {
   string account_id = 1;
@@ -14,5 +15,12 @@ message AccountEvents {
 }
 
 service AccountService {
+  option (org.noteroo.service) = {
+    service: {
+      host: 'api.noteroo.org',
+      port: 443,
+    }
+  };
+
   rpc ListEvent(ListEventsRequest) returns (ListEventsResponse);
 }

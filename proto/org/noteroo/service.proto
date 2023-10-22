@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package org.noteroo;
+
+import "google/protobuf/descriptor.proto";
+
+message Service {
+  string host = 1;
+  int32 port = 2;
+}
+
+message NoterooServiceOptions {
+  Service service = 1;
+}
+
+extend google.protobuf.ServiceOptions {
+  NoterooServiceOptions service = 7887650;
+}
