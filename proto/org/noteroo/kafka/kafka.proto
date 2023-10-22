@@ -4,9 +4,6 @@ package org.noteroo.kafka;
 
 import "google/protobuf/descriptor.proto";
 
-option go_package = "github.com/esiqveland/prototest/protos/org/noteroo/kafka";
-
-
 message KafkaOptions {
   string topic = 1;
 }

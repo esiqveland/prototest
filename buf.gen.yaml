@@ -1,6 +1,12 @@
 version: v1
 # Mix of local binaries and plugins
 # for plugin list, see: https://buf.build/plugins
+managed:
+  enabled: true
+  go_package_prefix:
+    default: "github.com/esiqveland/prototest/protos"
+    except:
+      - 'buf.build/googleapis/googleapis'
 plugins:
   - name: go
     out: generated/go

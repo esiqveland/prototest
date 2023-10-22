@@ -1,10 +1,8 @@
 syntax = "proto3";
 
-package org.noteroo.kafka.noteroo;
+package org.noteroo.kafka.account;
 
 import "org/noteroo/kafka/kafka.proto";
-
-option go_package = "github.com/esiqveland/prototest/protos/org/noteroo/kafka/noteroo";
 
 message AccountEvent {
   option (org.noteroo.kafka.kafka) = {
